@@ -1,6 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:digital_3/features/profile/widgets/profile_widget.dart';
 import 'package:digital_3/helpers/app_text_styles.dart';
+import 'package:digital_3/helpers/saved_data.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -20,22 +24,84 @@ class ProfileScreen extends StatelessWidget {
                 style: AppTextStyles.s19W600(),
               ),
               const SizedBox(height: 22),
-              CircleAvatar(
-                radius: 50,
-                child: Text(
-                  'AI',
-                  style: AppTextStyles.s28W600(color: Colors.white),
-                ),
+              FutureBuilder(
+                future: SavedData.getImage(),
+                builder: (context, image) {
+                  if (image.hasData) {
+                    return kIsWeb
+                        ? Image.network(image.data!)
+                        : CachedNetworkImage(
+                            imageUrl: image.data!,
+                            placeholder: (_, url) {
+                              return Container(
+                                height: 100,
+                                width: 100,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Shimmer.fromColors(
+                                  baseColor: Colors.grey.withOpacity(0.4),
+                                  highlightColor: Colors.white,
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      color: Colors.grey,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            imageBuilder: (_, imageProvider) {
+                              return Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: CachedNetworkImageProvider(
+                                      image.data!,
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                  }
+                  return const SizedBox();
+                },
               ),
               const SizedBox(height: 12),
-              Text(
-                'Adilet Ibraev',
-                style: AppTextStyles.s19W700(),
+              FutureBuilder(
+                future: SavedData.getName(),
+                builder: (context, name) {
+                  if (name.hasData) {
+                    return Text(
+                      name.data!,
+                      style: AppTextStyles.s19W400(),
+                    );
+                  }
+                  return Text(
+                    '',
+                    style: AppTextStyles.s19W400(),
+                  );
+                },
               ),
-              const SizedBox(height: 12),
-              Text(
-                '+996 554 160 500',
-                style: AppTextStyles.s19W400(),
+              const SizedBox(height: 5),
+              FutureBuilder(
+                future: SavedData.getEmail(),
+                builder: (context, email) {
+                  if (email.hasData) {
+                    return Text(
+                      email.data!,
+                      style: AppTextStyles.s19W400(),
+                    );
+                  }
+                  return Text(
+                    '',
+                    style: AppTextStyles.s19W400(),
+                  );
+                },
               ),
               const SizedBox(height: 12),
               ProfileWidget(

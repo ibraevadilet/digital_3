@@ -1,4 +1,4 @@
-import 'package:digital_3/features/auth/auth_screen.dart';
+import 'package:digital_3/features/auth/presentation/auth_screen.dart';
 import 'package:digital_3/helpers/app_colors.dart';
 import 'package:digital_3/helpers/app_text_styles.dart';
 import 'package:flutter/material.dart';

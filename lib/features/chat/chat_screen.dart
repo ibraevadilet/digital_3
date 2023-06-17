@@ -6,7 +6,7 @@ import 'package:digital_3/features/chat/logic/message_model.dart';
 import 'package:digital_3/features/chat/widgets/message_widget.dart';
 import 'package:digital_3/helpers/app_colors.dart';
 import 'package:digital_3/helpers/date_formates.dart';
-import 'package:digital_3/helpers/local_data.dart';
+import 'package:digital_3/helpers/saved_data.dart';
 import 'package:digital_3/widgets/app_error_text.dart';
 import 'package:digital_3/widgets/app_indicator.dart';
 import 'package:digital_3/widgets/custom_app_bar.dart';
@@ -99,8 +99,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                   );
                                   final imageUrl =
                                       await uploadImage(File(imageFile.path));
-                                  final userId = await getUserId();
-                                  final userName = await getUserName();
+                                  final userId = await SavedData.getUid();
+                                  final userName = await SavedData.getName();
 
                                   final model = MessageModel(
                                     message: imageUrl,
@@ -132,8 +132,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     Builder(
                       builder: (context) => InkWell(
                         onTap: () async {
-                          final userId = await getUserId();
-                          final userName = await getUserName();
+                          final userId = await SavedData.getUid();
+                          final userName = await SavedData.getName();
 
                           final model = MessageModel(
                             message: controller.text,
