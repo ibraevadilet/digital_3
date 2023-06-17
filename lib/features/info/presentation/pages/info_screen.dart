@@ -1,11 +1,11 @@
-import 'package:digital_3/features/reviews/data/models/review_model.dart';
-import 'package:digital_3/features/reviews/presentation/pages/direction_screen.dart';
+import 'package:digital_3/features/info/data/models/info_model.dart';
+import 'package:digital_3/features/info/presentation/pages/direction_screen.dart';
 import 'package:digital_3/helpers/app_colors.dart';
 import 'package:digital_3/helpers/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-class ReviewsScreen extends StatelessWidget {
-  ReviewsScreen({super.key});
+class InfoScreen extends StatelessWidget {
+  InfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +65,8 @@ class ReviewsScreen extends StatelessWidget {
         ));
   }
 
-  final List<ReviewModel> data = [
-    ReviewModel(
+  final List<InfoModel> data = [
+    InfoModel(
       'Здравоохранение',
       [
         DirectionModel(
@@ -121,7 +121,7 @@ class ReviewsScreen extends StatelessWidget {
         ),
       ],
     ),
-    ReviewModel(
+    InfoModel(
       'Образование',
       [
         DirectionModel(

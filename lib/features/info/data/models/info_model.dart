@@ -1,7 +1,7 @@
-class ReviewModel {
+class InfoModel {
   final String title;
   final List<DirectionModel> direction;
-  ReviewModel(this.title, this.direction);
+  InfoModel(this.title, this.direction);
 }
 
 class DirectionModel {

@@ -1,11 +1,11 @@
-import 'package:digital_3/features/reviews/data/models/review_model.dart';
-import 'package:digital_3/features/reviews/presentation/pages/detail_direction_screen.dart';
+import 'package:digital_3/features/info/data/models/info_model.dart';
+import 'package:digital_3/features/info/presentation/pages/detail_direction_screen.dart';
 import 'package:digital_3/helpers/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class DirectionScreen extends StatelessWidget {
   const DirectionScreen({super.key, required this.data});
-  final ReviewModel data;
+  final InfoModel data;
 
   @override
   Widget build(BuildContext context) {

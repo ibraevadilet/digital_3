@@ -1,5 +1,5 @@
-import 'package:digital_3/features/reviews/data/models/review_model.dart';
-import 'package:digital_3/features/reviews/presentation/widgets/custom_step_widget.dart';
+import 'package:digital_3/features/info/data/models/info_model.dart';
+import 'package:digital_3/features/info/presentation/widgets/custom_step_widget.dart';
 import 'package:digital_3/helpers/app_text_styles.dart';
 import 'package:digital_3/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
