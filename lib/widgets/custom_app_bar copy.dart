@@ -1,5 +1,4 @@
 import 'package:digital_3/helpers/app_colors.dart';
-import 'package:digital_3/helpers/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -15,16 +14,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return PreferredSize(
       preferredSize: preferredSize,
       child: AppBar(
-        title: Text(
-          title,
-          style: AppTextStyles.s19W700(
-            color: Colors.black,
-          ),
-        ),
+        title: Text(title),
         centerTitle: true,
-        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
-        backgroundColor: AppColors.colorEBEBEBGrey,
+        backgroundColor: AppColors.color38B6FFBLue,
       ),
     );
   }

@@ -1,5 +1,6 @@
-import 'package:digital_3/features/chat/chat_screen.dart';
+import 'package:digital_3/features/chat/chat_screen_list.dart';
 import 'package:digital_3/features/info/info_screen.dart';
+import 'package:digital_3/features/profile/profile_screen.dart';
 import 'package:digital_3/features/reviews/reviews_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -80,6 +81,19 @@ class _BottomNavigatorState extends State<BottomNavigatorScreen> {
             ),
             label: 'Справочник',
           ),
+          BottomNavigationBarItem(
+            activeIcon: const Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            icon: Icon(
+              Icons.person,
+              color: Colors.white.withOpacity(
+                0.5,
+              ),
+            ),
+            label: 'Профиль',
+          ),
         ],
       ),
     );
@@ -87,7 +101,8 @@ class _BottomNavigatorState extends State<BottomNavigatorScreen> {
 }
 
 List<Widget> pages = [
-  const ChatScreen(),
+  const ChatListScreen(),
   const ReviewsScreen(),
   const InfoScreen(),
+  const ProfileScreen(),
 ];
