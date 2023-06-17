@@ -13,15 +13,15 @@ class DirectionScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          leading: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          ),
+          iconTheme: const IconThemeData(color: Colors.black),
           elevation: 0,
           title: Text(
             data.title,
             style: const TextStyle(
-                fontSize: 24, fontWeight: FontWeight.w600, color: Colors.black),
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
           ),
         ),
         body: SafeArea(
