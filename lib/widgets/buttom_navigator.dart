@@ -1,6 +1,7 @@
 import 'package:digital_3/features/chat/chat_screen_list.dart';
 import 'package:digital_3/features/info/presentation/pages/info_screen.dart';
 import 'package:digital_3/features/profile/profile_screen.dart';
+import 'package:digital_3/features/reviews/reviews_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:digital_3/helpers/app_colors.dart';
@@ -43,37 +44,37 @@ class _BottomNavigatorState extends State<BottomNavigatorScreen> {
         items: [
           BottomNavigationBarItem(
             activeIcon: const Icon(
-              Icons.sports_martial_arts_outlined,
+              Icons.book,
               color: Colors.white,
             ),
             icon: Icon(
-              Icons.sports_martial_arts_outlined,
+              Icons.book,
+              color: Colors.white.withOpacity(
+                0.5,
+              ),
+            ),
+            label: 'Отзывы',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: const Icon(
+              Icons.chat,
+              color: Colors.white,
+            ),
+            icon: Icon(
+              Icons.chat,
               color: Colors.white.withOpacity(
                 0.5,
               ),
             ),
             label: 'Чат',
           ),
-          // BottomNavigationBarItem(
-          //   activeIcon: const Icon(
-          //     Icons.sports_score_rounded,
-          //     color: Colors.white,
-          //   ),
-          //   icon: Icon(
-          //     Icons.sports_score_rounded,
-          //     color: Colors.white.withOpacity(
-          //       0.5,
-          //     ),
-          //   ),
-          //   label: 'Отзывы',
-          // ),
           BottomNavigationBarItem(
             activeIcon: const Icon(
-              Icons.person,
+              Icons.list_alt_sharp,
               color: Colors.white,
             ),
             icon: Icon(
-              Icons.person,
+              Icons.list_alt_sharp,
               color: Colors.white.withOpacity(
                 0.5,
               ),
@@ -100,6 +101,7 @@ class _BottomNavigatorState extends State<BottomNavigatorScreen> {
 }
 
 List<Widget> pages = [
+  ReviewsScreen(),
   const ChatListScreen(),
   InfoScreen(),
   const ProfileScreen(),

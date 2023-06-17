@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:digital_3/features/reviews/logic/cubits/create_review_cubit/create_review_cubit.dart';
 import 'package:digital_3/features/reviews/logic/model/review_model.dart';
+import 'package:digital_3/helpers/saved_data.dart';
 import 'package:digital_3/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -238,24 +239,17 @@ class _AddPostPageState extends State<AddPostPage> {
                                   postText.isEmpty) {
                                 return;
                               }
-                              // final userId =
-                              //     AuthRepository().currentUser?.uid ??
-                              //         DateTime.now().toString();
-                              // final userName =
-                              //     AuthRepository().currentUser?.displayName ??
-                              //         'Name';
-                              // final userImage = AuthRepository()
-                              //         .currentUser
-                              //         ?.photoURL ??
-                              //     'https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg';
+                              final userId = await SavedData.getUid();
+                              final userName = await SavedData.getName();
+                              final userImage = await SavedData.getImage();
                               await createCubit.addPost(
                                 ReviewModel(
                                   isLiked: false,
                                   author: Author(
-                                      name: 'name',
-                                      id: 'id',
-                                      avatar:
-                                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6GDZLuzPjqjqIE4RdmcFesXIAfmXvkE7zfDzbKQRPjA&s'),
+                                    name: userName,
+                                    id: userId,
+                                    avatar: userImage,
+                                  ),
                                   title: title,
                                   image: imageFile!.path,
                                   text: postText,

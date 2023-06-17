@@ -1,6 +1,8 @@
 import 'package:digital_3/features/auth/presentation/auth_screen.dart';
 import 'package:digital_3/helpers/app_colors.dart';
 import 'package:digital_3/helpers/app_text_styles.dart';
+import 'package:digital_3/helpers/saved_data.dart';
+import 'package:digital_3/widgets/buttom_navigator.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,6 +16,21 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
+      SavedData.getName().then((value) => value.isEmpty
+          ? Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AuthScreen(),
+              ),
+              (protected) => false,
+            )
+          : Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const BottomNavigatorScreen(),
+              ),
+              (protected) => false,
+            ));
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(

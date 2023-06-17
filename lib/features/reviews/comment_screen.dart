@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:digital_3/features/reviews/logic/model/review_model.dart';
+import 'package:digital_3/helpers/saved_data.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -93,25 +94,17 @@ class _CommentScreenState extends State<CommentScreen> {
                 suffix: isEntred()
                     ? InkWell(
                         onTap: () async {
-                          // final userId =
-                          //     AuthRepository().currentUser?.uid ??
-                          //         DateTime.now().toString();
-                          // final userName =
-                          //     AuthRepository().currentUser?.displayName ??
-                          //         'Name';
-                          // final userImage = AuthRepository()
-                          //         .currentUser
-                          //         ?.photoURL ??
-                          //     'https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg';
+                          final userId = await SavedData.getUid();
+                          final userName = await SavedData.getName();
+                          final userImage = await SavedData.getImage();
                           setState(
                             () {
                               lisCommments.add(
                                 Comments(
                                   author: Author(
-                                    name: 'userName',
-                                    id: 'userId',
-                                    avatar:
-                                        'https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg',
+                                    name: userName,
+                                    id: userId,
+                                    avatar: userImage,
                                   ),
                                   comment: commentController.text,
                                 ),
@@ -119,7 +112,7 @@ class _CommentScreenState extends State<CommentScreen> {
                               commentController.clear();
                             },
                           );
-                          final ref = FirebaseDatabase.instance.ref('posts');
+                          final ref = FirebaseDatabase.instance.ref('reviews');
                           ref.child(widget.model.id!).update(
                                 ReviewModel(
                                   text: widget.model.text,

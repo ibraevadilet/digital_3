@@ -1,5 +1,5 @@
 class ReviewModel {
-  late String? id;
+  String? id;
   late Author author;
   late String title;
   late String image;
@@ -18,12 +18,14 @@ class ReviewModel {
   });
 
   ReviewModel.fromJson(Map<dynamic, dynamic> json) {
+    print(json['id']);
+    id = json['id'];
     author = Author.fromJson(json['author']);
     title = json['title'];
     image = json['image'];
     text = json['text'];
+    comments = <Comments>[];
     if (json['comments'] != null) {
-      comments = <Comments>[];
       json['comments'].forEach((v) {
         comments.add(Comments.fromJson(v));
       });
@@ -32,6 +34,7 @@ class ReviewModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
     data['author'] = author.toJson();
     data['title'] = title;
     data['image'] = image;
