@@ -40,3 +40,9 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class Content {
+  final String name;
+
+  Content(this.name);
+}

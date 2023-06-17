@@ -48,7 +48,7 @@ class InfoScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-              separatorBuilder: (context, index) => const Column(
+              separatorBuilder: (context, index) =>  Column(
                     children: [
                       SizedBox(
                         height: 16,
