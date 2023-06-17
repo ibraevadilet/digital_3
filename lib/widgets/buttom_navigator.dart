@@ -1,6 +1,6 @@
 import 'package:digital_3/features/chat/chat_screen.dart';
 import 'package:digital_3/features/info/info_screen.dart';
-import 'package:digital_3/features/reviews/reviews_screen.dart';
+import 'package:digital_3/features/reviews/presentation/pages/reviews_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:digital_3/helpers/app_colors.dart';
@@ -88,6 +88,6 @@ class _BottomNavigatorState extends State<BottomNavigatorScreen> {
 
 List<Widget> pages = [
   const ChatScreen(),
-  const ReviewsScreen(),
   const InfoScreen(),
+  ReviewsScreen(),
 ];
