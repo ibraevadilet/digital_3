@@ -1,8 +1,11 @@
+import 'package:digital_3/features/chat/logic/chat_cubit/chat_cubit.dart';
+import 'package:digital_3/features/chat/logic/chat_repo.dart';
 import 'package:digital_3/features/splash/splash_screen.dart';
 import 'package:digital_3/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 
@@ -20,17 +23,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      scaffoldMessengerKey: scaffoldKey,
-      debugShowCheckedModeBanner: false,
-      title: 'Smart Go Kg',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        splashColor: Colors.transparent,
-        splashFactory: NoSplash.splashFactory,
-        highlightColor: Colors.transparent,
+    return BlocProvider(
+      create: (context) => ChatCubit(GetMessagesRepoImpl()),
+      child: MaterialApp(
+        scaffoldMessengerKey: scaffoldKey,
+        debugShowCheckedModeBanner: false,
+        title: 'Smart Go Kg',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          splashColor: Colors.transparent,
+          splashFactory: NoSplash.splashFactory,
+          highlightColor: Colors.transparent,
+        ),
+        home: const SplashScreen(),
       ),
-      home: const SplashScreen(),
     );
   }
 }
